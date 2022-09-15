@@ -101,14 +101,13 @@ namespace ClickLink
                             {
                                 el.InvokeMember("Click");
                                 delistedIPs.Add(ip);
+			    	if (unreadEmails.Count == delistedIPs.Count)
+                                {
+                                    var message = String.Join(Environment.NewLine, delistedIPs);
+                                    MessageBox.Show(("The following IPs have been delisted: \n\n" + message), "Delistings Complete");
+                                }
                             }
-
-                            if (delistedIPs.Count == unreadEmails.Count)
-                            {
-								var message = String.Join(Environment.NewLine, delistedIPs);
-                                MessageBox.Show(("The following IPs have been delisted: \n\n" + message), "Delistings Complete");
-                            }
-                        }
+			}
                     }
                 }
             }
